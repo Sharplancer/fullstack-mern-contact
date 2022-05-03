@@ -1,8 +1,6 @@
 import { Contacts } from '../models/contact.model';
 
 const createContact = (contact, next) => {
-  console.log(contact);
-
   const newContact = new Contacts(contact);
   newContact.save()
   .then(() => {

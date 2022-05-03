@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useSnackbar } from 'notistack';
 import * as Yup from 'yup';
 import {
     Button,
@@ -11,7 +12,6 @@ import {
     Box,
     TextField,
     FormHelperText,
-    Alert,
 } from "@mui/material";
 
 import { addContact } from "../store/contacts-slice";
@@ -29,11 +29,11 @@ const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<Co
   const dispatch = useDispatch();
   const status = useSelector((state: RootState) => state.contacts.status);
   const error = useSelector((state: RootState) => state.contacts.error);
-  const name = useSelector((state: RootState) => state.contacts.name);
   const firstNameRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const lastNameRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const emailRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const messageRef = useRef() as React.MutableRefObject<HTMLTextAreaElement>;
+  const { enqueueSnackbar } = useSnackbar();
 
   const validationSchema = Yup.object().shape({
     firstName: Yup.string()
@@ -68,9 +68,9 @@ const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<Co
   });
 
   useEffect(() => {
-    if (['ADD'].includes(name) && status === 'completed' && error === '') {
-    }
-  }, [ status, error, name ]);
+    if(status && status !== 'pending')
+      enqueueSnackbar(`${status}`, { variant: status });
+  }, [status]);
 
   const submitForm = () => {
     const firstName: string = firstNameRef.current.value;
@@ -82,7 +82,6 @@ const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<Co
 
   return (
     <Fragment>
-      { error !== '' ? <Alert severity="error">{error}</Alert> : status === "success" && <Alert severity="success">Success!</Alert>}
       <form onSubmit={handleSubmit(submitForm)}>
         <Stack spacing={2}>
             <FormControl>

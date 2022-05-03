@@ -45,6 +45,8 @@
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "find-up": "^5.0.0",
+    "mongoose": "^6.3.2",
+    "notistack": "^2.0.4",
     "react-hook-form": "^7.30.0",
     "react-redux": "^8.0.1",
     "react-scripts": "^5.0.1",

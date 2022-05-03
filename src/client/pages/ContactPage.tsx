@@ -1,10 +1,13 @@
 import React from "react";
 import ContactForm from "../components/ContactForm";
+import { SnackbarProvider } from 'notistack';
 
 const ContactPage = () => {
 
     return (
-        <ContactForm editMode={true}></ContactForm>
+        <SnackbarProvider>
+            <ContactForm editMode={true}></ContactForm>
+        </SnackbarProvider>
     );
 }
 
