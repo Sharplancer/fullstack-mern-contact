@@ -14,6 +14,9 @@
     "outDir": "../../dist/server",
     "lib": ["ES2019"],
     "moduleResolution": "node",
+    "paths": {
+      "@exmpl/*": ["./*"]
+    },
     "types": ["node"],
     "incremental": true,
     "composite": true

@@ -4,7 +4,7 @@ import { users, getUserById } from '../db';
 
 export function apiRouter() {
   const router = Router();
-  router.use(bodyParser.json());
+  router.use(<any>bodyParser.json());
 
   router.get('/api/users', (req, res) => {
     res.json(users);
