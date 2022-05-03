@@ -2,20 +2,15 @@ import { Request, Response } from 'express';
 import { createContact } from '../services/contact.service';
 
 const addContact = async (req, res) => {
-  const { firstName, lastName, email, message } = req.body;
+  const contact = req.body;
 
-  if ( !firstName || !lastName || !email || !message ) {
+  if ( !contact ) {
     return res.status(422).json({
       message: 'The fields name and description are required',
     });
   }
 
-  createContact({
-      firstName,
-      lastName,
-      email,
-      message
-  }, (error, result) => {
+  createContact(contact, (error, result) => {
       if(error)
         return res.status(500).json({ data: result });
       else

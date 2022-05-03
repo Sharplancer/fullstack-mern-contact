@@ -19,22 +19,11 @@
     "dev": "concurrently --prefix \"[{name}]\" --names \"SERVER,CLIENT\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run dev-server\" \"npm run dev-client\"",
     "build": "concurrently --prefix \"[{name}]\" --names \"SERVER,CLIENT\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run build-server\" \"npm run build-client\""
   },
-  "keywords": [
-    "typescript",
-    "react",
-    "starter-kit",
-    "webpack",
-    "fullstack",
-    "express",
-    "express4",
-    "node"
-  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/gilamran/fullstack-typescript.git"
+    "url": "https://github.com/Sharplancer/fullstack-typescript.git"
   },
-  "license": "MIT",
-  "author": "Gil Amran",
+  "author": "Atto Niami",
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
     "@chakra-ui/react": "^1.8.8",

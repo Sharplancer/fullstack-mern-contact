@@ -1,7 +1,7 @@
 import { createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
 import Contact from "../models/Contact";
 
-const API_URL = 'http://localhost:4000/api';
+const API_URL = 'http://localhost:3000/api/v1';
 
 type ContactState = {
   error: string,
@@ -28,15 +28,15 @@ const contactsSlice = createSlice({
     },
     setContacts(state: ContactState, action: PayloadAction<{ contacts: Contact[]}>) {
       state.list = action.payload.contacts;
-      state.status = 'completed';
+      state.status = 'success';
     },
     addNewContact(state: ContactState, action: PayloadAction<Contact>) {
       state.list.push(action.payload);
-      state.status = 'completed';
+      state.status = 'success';
     },
     contactsFail(state: ContactState, action: PayloadAction<string>) {
       state.error = action.payload;
-      state.status = 'completed';
+      state.status = 'failed';
     }
   }
 });
@@ -71,7 +71,10 @@ export const addContact = (firstName:  string, lastName: string, email: string, 
     try {
       const response = await fetch(`${API_URL}/contacts`, {
         method: 'POST',
-        body: JSON.stringify({ firstName, lastName, email, message }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({firstName, lastName, email, message}),
       });
       const responseData: {
         contact: Contact,

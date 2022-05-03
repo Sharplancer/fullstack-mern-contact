@@ -1,8 +1,8 @@
-import { Contact } from '../models/contact.model';
-
+import { Contacts } from '../models/contact.model';
 
 const createContact = (contact, next) => {
-  Contact.create(contact)
+  const newContact = new Contacts(contact);
+  newContact.save()
   .then(() => {
     next(0, 'success');
   })

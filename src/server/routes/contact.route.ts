@@ -3,6 +3,6 @@ import { addContact } from '../controllers/contact.controller';
 
 export const contactRoute = () => {
   const router = Router();
-  router.post('/api/contact', addContact);
+  router.post('/api/v1/contacts/', addContact);
   return router;
 };

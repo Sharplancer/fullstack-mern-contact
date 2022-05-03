@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import mongoose from 'mongoose';
 import { contactRoute } from './routes/contact.route';
+import { apiRouter } from './routes/api-router';
 import { pagesRouter } from './routes/pages-router';
 import { staticsRouter } from './routes/statics-router';
 import * as config from './config';
@@ -31,6 +32,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 app.use('/assets', <any>express.static(path.join(process.cwd(), 'assets')));
+app.use(apiRouter());
 app.use(contactRoute());
 app.use(staticsRouter());
 app.use(pagesRouter());

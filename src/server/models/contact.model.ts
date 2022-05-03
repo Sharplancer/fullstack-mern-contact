@@ -1,38 +1,19 @@
 import mongoose, { Schema, Model, Document } from 'mongoose';
+import { string } from 'yup';
 
-type ContactDocument = Document & {
-    firstName: string;
-    lastName: string;
-    email: string;
-    message: string;
-};
+interface IContact {
+  firstName: string;
+  lastName: string;
+  email: string;
+  message: string;
+}
 
-const contactsSchema = new Schema(
-  {
-    firstName: {
-        type: Schema.Types.String,
-        required: true,
-    },
-    secondName: {
-        type: Schema.Types.String,
-        required: true,
-    },
-    email: {
-        type: Schema.Types.String,
-        required: true,
-        unique: true,
-    },
-    message: {
-        type: Schema.Types.String,
-        required: true,
-    },
-  },
-  {
-    collection: 'contacts',
-    timestamps: true,
-  },
-);
+const contactSchema = new Schema<IContact>({
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  email: { type: String, required: true },
+  message: { type: String, required: true },
+});
 
-const Contact: Model<ContactDocument> = mongoose.model<ContactDocument>('Contact', contactsSchema);
-
-export { Contact };
+const Contacts = mongoose.model<IContact>('Contact', contactSchema);
+export { Contacts };
