@@ -11,11 +11,11 @@ import {
     Box,
     TextField,
     FormHelperText,
+    Alert,
 } from "@mui/material";
 
 import { addContact } from "../store/contacts-slice";
 import { RootState } from "../store";
-import ErrorMessage from "./UI/ErrorMessage";
 
 type ContactFormProps = {
     editMode: boolean
@@ -82,7 +82,7 @@ const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<Co
 
   return (
     <Fragment>
-      { error !== '' && <ErrorMessage message={error} /> }
+      { error !== '' ? <Alert severity="error">{error}</Alert> : status === "success" && <Alert severity="success">Success!</Alert>}
       <form onSubmit={handleSubmit(submitForm)}>
         <Stack spacing={2}>
             <FormControl>
@@ -90,7 +90,7 @@ const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<Co
                 {...register('firstName')}
                 name="firstName"
                 placeholder="First Name"
-                aria-label="firstName"
+                variant="standard"
                 error={errors.firstName ? true : false}
                 inputRef={firstNameRef}
               />
@@ -103,7 +103,7 @@ const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<Co
                 {...register('lastName')}
                 name="lastName"
                 placeholder="Last Name"
-                aria-label="lastName"
+                variant="standard"
                 error={errors.lastName ? true : false}
                 inputRef={lastNameRef}
               />
@@ -115,8 +115,8 @@ const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<Co
               <TextField
                 {...register('email')}
                 name="email"
-                placeholder="email"
-                aria-label="Email"
+                placeholder="Email"
+                variant="standard"
                 error={errors.email ? true : false}
                 inputRef={emailRef}
               />
@@ -128,8 +128,8 @@ const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<Co
                 <TextField
                     {...register('message')}
                     name="message"
-                    placeholder="message here"
-                    aria-label="Message"
+                    placeholder="Type your message here"
+                    variant="filled"
                     minRows={5}
                     multiline
                     error={errors.message ? true : false}
