@@ -1,4 +1,5 @@
 import { createContact } from '../services/contact.service';
+import { mailer } from '../utils/mailer';
 
 const addContact = async (req, res) => {
   const contact = req.body;
@@ -12,9 +13,11 @@ const addContact = async (req, res) => {
   createContact(contact, (error, result) => {
     if(error)
       return res.status(500).json({ data: result });
-    else
-      return res.status(201).json({ data: result });
+    else {
+      mailer(contact.firstName, contact.email, res);
+    }
   })
+
 };
 
 export { addContact };
