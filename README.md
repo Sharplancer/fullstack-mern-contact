@@ -14,6 +14,11 @@ cd <MyProjectName>
 npm install
 npm run dev
 ```
+
+Just run this command to automated test.
+```bash
+npm test
+```
 ## Requirements
 
 - `NodeJs 16.13.+`, `Chrome 79+` or `FireFox 72+`
@@ -27,7 +32,6 @@ npm run dev
 ├── /src/                             # The source code of the application
 │   ├── /client/                      # React app
 │   ├── /server/                      # Express server app
-│   ├── /shared/                      # The shared code between the client and the server
 ├── /assets/                          # images, css, jsons etc.
 ├── .eslintrc                         # es-lint configuration
 ├── .prettierec                       # prettier configuration
@@ -44,10 +48,12 @@ npm run dev
 
 - [React v17]
 - [ReactHooks]
+- [Redux]
+- [Material UI]
 - [Nodemailer]
 - [Express]
 - [MongoDB]
-
+- [Jest]
 
 ### Usage
 
