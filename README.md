@@ -83,15 +83,3 @@ git push -u origin master
 
 All applications require a config mechanism, for example, `SLACK_API_TOKEN`. Things that you don't want in your git history, you want a different environment to have different value (dev/staging/production). This repo uses the file `config.ts` to access all your app variables. And a `.env` file to override variable in dev environment. This file is ignored from git.
 
----
-
-#### What's not included
-
-- Universal (Server side rendering)
-- Redux/MobX (State management)
-
----
-
-#### Licence
-
-This code is released as is, under MIT licence. Feel free to use it for free for both commercial and private projects. No warranty provided.
