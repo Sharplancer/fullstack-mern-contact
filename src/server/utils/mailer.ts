@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-export const mailer = (firstName, email, res) => {
+export const mailer = (contact, res) => {
   const transporter = nodemailer.createTransport({
     host: 'smtp.mailtrap.io',
     port: 2525,
@@ -19,19 +19,19 @@ export const mailer = (firstName, email, res) => {
   });
   
   const mailOptions = {
-    from: email,
+    from: contact.email,
     to: "sharplancer021@gmail.com",
-    subject: `Message from ${firstName}`,
-    text: 'That was easy!'
+    subject: `Message from ${contact.firstName} ${contact.lastName}<${contact.email}>`,
+    text: contact.message
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error('MAILER error', error);
-      return res.status(500).json({ data: error });
+      return res.status(500).json({ data: error, message: "Error occured on mailing!" });
     } else {
       console.info('Mailer Email sent: ' + info.response);
-      return res.status(201).json({ data: info.response });
+      return res.status(201).json({ data: info.response, message: "Successed!" });
     }
   })
 }

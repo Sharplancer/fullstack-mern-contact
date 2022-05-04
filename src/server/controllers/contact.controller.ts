@@ -12,9 +12,9 @@ const addContact = async (req, res) => {
 
   createContact(contact, (error, result) => {
     if(error)
-      return res.status(500).json({ data: result });
+      return res.status(500).json({ data: result, message: "Error occured on database!" });
     else {
-      mailer(contact.firstName, contact.email, res);
+      mailer(contact, res);
     }
   })
 

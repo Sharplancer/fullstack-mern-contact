@@ -36,7 +36,7 @@ const contactsSlice = createSlice({
     },
     contactsFail(state: ContactState, action: PayloadAction<string>) {
       state.error = action.payload;
-      state.status = 'failed';
+      state.status = 'error';
     }
   }
 });
