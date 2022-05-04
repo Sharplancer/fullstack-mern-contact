@@ -1,6 +1,6 @@
 # FAST FullStack React with TypeScript starter kit.
 
-<img src="https://github.com/gilamran/fullstack-typescript/raw/master/assets/images/logo.png" width="150">
+<img src="https://github.com/Sharplancer/fullstack-typescript/raw/master/assets/images/logo.png" width="150">
 
 ---
 
@@ -9,34 +9,11 @@
 Just clone this repository into your own project folder. and start working
 
 ```bash
-git clone https://github.com/gilamran/fullstack-typescript.git <MyProjectName>
+git clone https://github.com/Sharplancer/fullstack-typescript.git <MyProjectName>
 cd <MyProjectName>
 npm install
 npm run dev
 ```
-
-If you want to detach from this repository into your own repository do this:
-
-```bash
-git remote remove origin
-git remote add origin YOUR_REPO_URL
-git push -u origin master
-```
-
-## Why
-
-- **Simple** to jump into, **Fast** because it is simple.
-- Separate `tsconfig.json` for client and server.
-- Client and server can share code (And types). For example: [IUserDTO.d.ts](https://github.com/gilamran/fullstack-typescript/blob/master/src/shared/IUserDTO.d.ts)
-- The client is bundled using [Webpack](https://webpack.github.io/) because it goes to the browser.
-- The server is emitted by [TypeScript](https://github.com/Microsoft/TypeScript) because node now supports es6.
-
-<p align="center"> 
-<img src="https://github.com/gilamran/fullstack-typescript/raw/master/assets/images/flow.png" width="500">
-</p>
-
----
-
 ## Requirements
 
 - `NodeJs 16.13.+`, `Chrome 79+` or `FireFox 72+`
@@ -65,11 +42,12 @@ git push -u origin master
 
 ### What's included
 
-- [React v17](https://facebook.github.io/react/)
-- [React router v6](https://github.com/ReactTraining/react-router)
-- [Material-ui v5](https://github.com/mui-org/material-ui)
-- [emotion](https://emotion.sh/docs/introduction)
-- [Axios](https://github.com/mzabriskie/axios) (For Client/Server communication)
+- [React v17]
+- [ReactHooks]
+- [Nodemailer]
+- [Express]
+- [MongoDB]
+
 
 ### Usage
 
