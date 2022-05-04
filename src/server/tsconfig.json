@@ -19,6 +19,5 @@
     "composite": true
   },
   "include": ["**/*.ts"],
-  "exclude": ["**/*.test.ts"],
-  "references": [{ "path": "../shared" }]
+  "exclude": ["**/*.test.ts"]
 }

@@ -12,6 +12,7 @@ import {
     Box,
     TextField,
     FormHelperText,
+    CircularProgress,
 } from "@mui/material";
 
 import { addContact } from "../store/contacts-slice";
@@ -28,6 +29,7 @@ type ContactFormHandle = {
 const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<ContactFormHandle>) => {
   const dispatch = useDispatch();
   const status = useSelector((state: RootState) => state.contacts.status);
+  const msg = useSelector((state: RootState) => state.contacts.msg);
   const error = useSelector((state: RootState) => state.contacts.error);
   const firstNameRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const lastNameRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -69,7 +71,7 @@ const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<Co
 
   useEffect(() => {
     if(status && status !== 'pending')
-      enqueueSnackbar(`${status}`, { variant: status });
+      enqueueSnackbar(`${msg}`, { variant: status });
   }, [status]);
 
   const submitForm = () => {
@@ -82,6 +84,7 @@ const ContactForm = React.forwardRef((props: ContactFormProps, ref: React.Ref<Co
 
   return (
     <Fragment>
+      {status === 'pending' && <CircularProgress />}
       <form onSubmit={handleSubmit(submitForm)}>
         <Stack spacing={2}>
             <FormControl>

@@ -28,10 +28,10 @@ export const mailer = (contact, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error('MAILER error', error);
-      return res.status(500).json({ data: error, message: "Error occured on mailing!" });
+      return res.status(500).json({ data: error, msg: "Error occured on mailing!" });
     } else {
       console.info('Mailer Email sent: ' + info.response);
-      return res.status(201).json({ data: info.response, message: "Successed!" });
+      return res.status(201).json({ data: info.response, msg: "Adding contact data to MongoDB & sending mail successed!" });
     }
   })
 }

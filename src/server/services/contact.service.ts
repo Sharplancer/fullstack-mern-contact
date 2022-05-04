@@ -2,15 +2,15 @@ import { Contacts } from '../models/contact.model';
 
 const createContact = (contact, next) => {
   const newContact = new Contacts(contact);
-  newContact.save()
+  return newContact.save()
   .then(() => {
-    console.info('Add ContactForm data to MongoDB successed!');
     next(0, 'success');
+    return true;
   })
-  .catch((error => {
-    console.error('Add ContactForm data to MongoDB failed!');
+  .catch(error => {
     next(1, error);
-  }));
+    return false;
+  });
 };
 
 export { createContact };
