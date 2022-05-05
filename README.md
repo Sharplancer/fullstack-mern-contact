@@ -19,6 +19,11 @@ Just run this command to automated test.
 ```bash
 npm test
 ```
+
+Visit this url in your broswer.
+```bash
+http://localhost:3000
+```
 ## Requirements
 
 - `NodeJs 16.13.+`, `Chrome 79+` or `FireFox 72+`
